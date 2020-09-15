@@ -48,6 +48,17 @@ function dbGetViewsForUser (userID) {
   }
 }
 
+function dbGetWarningsForUser (userID) {
+  try {
+    let rows = db.prepare('all', "SELECT * FROM warnings WHERE userID = ?", [userID]);
+    //increase the view count by one
+    return rows.length;
+  } catch (err) {
+    logger.error('Couldn\'t get warnings for user ' + userID + '. returning 0') ;
+    return 0;
+  }
+}
+
 module.exports = function getUserInfo (req, res) {
   let userID = req.query.userID;
 
@@ -67,5 +78,6 @@ module.exports = function getUserInfo (req, res) {
     minutesSaved: segmentsSummary.minutesSaved,
     segmentCount: segmentsSummary.segmentCount,
     viewCount: dbGetViewsForUser(userID),
+    warnings: dbGetWarningsForUser(userID)
   });
 }
