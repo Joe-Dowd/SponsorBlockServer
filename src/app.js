@@ -24,6 +24,7 @@ var getViewsForUser = require('./routes/getViewsForUser.js');
 var getTopUsers = require('./routes/getTopUsers.js');
 var getTotalStats = require('./routes/getTotalStats.js');
 var getDaysSavedFormatted = require('./routes/getDaysSavedFormatted.js');
+var getUserInfo = require('./routes/getUserInfo.js');
 var postNoSegments = require('./routes/postNoSegments.js');
 var getIsUserVIP = require('./routes/getIsUserVIP.js');
 
@@ -92,6 +93,8 @@ app.get('/api/getTopUsers', getTopUsers);
 //send out totals
 //send the total submissions, total views and total minutes saved
 app.get('/api/getTotalStats', getTotalStats);
+
+app.get('/api/getUserInfo', getUserInfo);
 
 //send out a formatted time saved total
 app.get('/api/getDaysSavedFormatted', getDaysSavedFormatted);
