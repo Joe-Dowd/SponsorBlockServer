@@ -51,7 +51,6 @@ function dbGetViewsForUser (userID) {
 function dbGetWarningsForUser (userID) {
   try {
     let rows = db.prepare('all', "SELECT * FROM warnings WHERE userID = ?", [userID]);
-    //increase the view count by one
     return rows.length;
   } catch (err) {
     logger.error('Couldn\'t get warnings for user ' + userID + '. returning 0') ;
