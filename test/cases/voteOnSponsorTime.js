@@ -35,6 +35,7 @@ describe('voteOnSponsorTime', () => {
     db.exec(startOfQuery + "('incorrect-category-change', 1, 11, 500, 'incorrect-category-change', '"+ getHash('somebody-else-id') +"', 0, 50, 'sponsor', 0, '" + getHash('incorrect-category-change', 1) + "')");
     db.exec(startOfQuery + "('vote-testtesttest', 1, 11, 2, 'warnvote-uuid-0', 'testman', 0, 50, 'sponsor', 0, '" + getHash('vote-testtesttest', 1) + "')");
     
+    // Warning tests rely on test config value
     db.exec(startOfWarningQuery + "('" + warnUser01Hash + "', '" + now + "', '" + warnVip01Hash + "')");
     db.exec(startOfWarningQuery + "('" + warnUser01Hash + "', '" + (now-1000) + "', '" + warnVip01Hash + "')");
     db.exec(startOfWarningQuery + "('" + warnUser01Hash + "', '" + (now-2000) + "', '" + warnVip01Hash + "')");

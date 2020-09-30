@@ -16,6 +16,8 @@ describe('postSkipSegments', () => {
     const warnUser02Hash = getHash("warn-user02");
     const MILLISECONDS_IN_HOUR = 3600000;
     const warningExpireTime = MILLISECONDS_IN_HOUR * config.hoursAfterWarningExpires;
+
+    // Warning tests rely on test config value
     const startOfWarningQuery = 'INSERT INTO warnings (userID, issueTime, issuerUserID) VALUES';
     db.exec(startOfWarningQuery + "('" + warnUser01Hash + "', '" + now + "', '" + warnVip01Hash + "')");
     db.exec(startOfWarningQuery + "('" + warnUser01Hash + "', '" + (now-1000) + "', '" + warnVip01Hash + "')");
